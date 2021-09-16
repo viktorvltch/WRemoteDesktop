@@ -7,3 +7,4 @@ SOURCES += \
 
 HEADERS += \
     WMainWindow.h
+
