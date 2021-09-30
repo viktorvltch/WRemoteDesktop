@@ -2,8 +2,8 @@
 #include <QPixmap>
 #include <QScreen>
 #include <QScrollBar>
+#include <QHostAddress>
 #include "WMainWindow.h"
-#include "WServersSelectDialog.h"
 
 
 #define PORT 8088
