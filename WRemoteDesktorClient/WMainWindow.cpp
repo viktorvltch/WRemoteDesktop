@@ -8,6 +8,7 @@
 
 #define PORT 8088
 
+
 QTcpSocket *socket;
 int messageLength = 0;
 bool listenState = false;
@@ -100,7 +101,7 @@ void WMainWindow::WServerDisconnect() {
 }
 
 void WMainWindow::WConnected() {
-	tbx_logs->append("Connected to " + QString::number(socket->peerAddress().toIPv4Address()));
+	tbx_logs->append("Connected to " + socket->peerAddress().toString());
 }
 
 void WMainWindow::WDisconnected() {
@@ -135,6 +136,7 @@ void WMainWindow::WReadServer() {
 	messageLength = 0;
 }
 
+
 void WMainWindow::WErrorSocket(QAbstractSocket::SocketError error) {
 	switch (error) {
 		case QAbstractSocket::HostNotFoundError:
@@ -157,3 +159,4 @@ void WMainWindow::WErrorSocket(QAbstractSocket::SocketError error) {
 void WMainWindow::WLogsAppended() {
 	tbx_logs->verticalScrollBar()->setValue(tbx_logs->verticalScrollBar()->maximum());
 }
+
