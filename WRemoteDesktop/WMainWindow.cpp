@@ -10,6 +10,7 @@
 
 
 #define PORT 8088
+#define TIMER 50
 
 QTimer *timer;
 QTcpServer *tcp_server;
@@ -52,8 +53,7 @@ WMainWindow::WMainWindow() : QWidget() {
 
 	timer = new QTimer;
 	QObject::connect(timer, SIGNAL(timeout()), this, SLOT(WSendFrame()));
-	timer->start(50);
-
+	timer->start(TIMER);
 }
 
 WMainWindow::~WMainWindow() {
@@ -77,7 +77,7 @@ void WMainWindow::WSendFrame() {
 	QByteArray bytes;
 	QBuffer buffer(&bytes);
 	buffer.open(QIODevice::WriteOnly);
-	screenImg.save(&buffer, "PNG");
+	screenImg.save(&buffer, "PNG", 0);
 	buffer.close();
 
 	QByteArray packet;
@@ -109,5 +109,5 @@ void WMainWindow::WClientDisconnected() {
 }
 
 void WMainWindow::WReadClient() {
-	qDebug() << "Read client";
+
 }
